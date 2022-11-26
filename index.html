@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+    <title>Laba</title>
+</head>
+
+<body>
+    <button onclick="upEl()">(UP)</button>
+    <button onclick="downEl()">(Yarik)</button>
+
+    <div class="row" style="display: grid">
+        <div class="column">
+            <img onclick="selectImage(1)" id="image1" src="wwdc22.jpg" alt="Snow" style="width:100%">
+        </div>
+        <div class="column">
+            <img onclick="selectImage(2)" id="image2" src="wwdc21.jpg" alt="Forest" style="width:100%">
+        </div>
+        <div class="column">
+            <img onclick="selectImage(3)" id="image3" src="wwdc19.jpg" alt="Mountains" style="width:100%">
+        </div>
+    </div>
+
+    <button onclick="myFunction()">Try it</button>
+</body>
+
+</html>
+<script>
+    function myFunction() {
+        let width = prompt("Please enter your name:");
+        let height = prompt("Please enter your name:");
+        let border = prompt("Please enter your border:");
+
+        document.getElementById("image" + selected).style.width = width + 'px';
+        document.getElementById("image" + selected).style.height = height + 'px';
+        document.getElementById("image" + selected).style.border = border + 'px solid #FF0000';
+    }
+
+    let selected = 1;
+
+    function selectImage(numb) {
+        selected = numb;
+    }
+
+    function upEl() {
+        if (selected === 1) {
+            let tempHref = document.getElementById("image1").src;
+            document.getElementById("image1").setAttribute("src", document.getElementById("image3").src);
+            document.getElementById("image3").setAttribute("src", tempHref);
+        }
+        if (selected === 2) {
+            let tempHref = document.getElementById("image2").src;
+            document.getElementById("image2").setAttribute("src", document.getElementById("image1").src);
+            document.getElementById("image1").setAttribute("src", tempHref);
+        }
+        if (selected === 3) {
+            let tempHref = document.getElementById("image3").src;
+            document.getElementById("image3").setAttribute("src", document.getElementById("image2").src);
+            document.getElementById("image2").setAttribute("src", tempHref);
+        }
+    }
+
+    function downEl() {
+        if (selected === 1) {
+            let tempHref = document.getElementById("image1").src;
+            document.getElementById("image1").setAttribute("src", document.getElementById("image2").src);
+            document.getElementById("image2").setAttribute("src", tempHref);
+        }
+        if (selected === 2) {
+            let tempHref = document.getElementById("image2").src;
+            document.getElementById("image2").setAttribute("src", document.getElementById("image3").src);
+            document.getElementById("image3").setAttribute("src", tempHref);
+        }
+        if (selected === 3) {
+            let tempHref = document.getElementById("image2").src;
+            document.getElementById("image2").setAttribute("src", document.getElementById("image3").src);
+            document.getElementById("image3").setAttribute("src", tempHref);
+        }
+    }
+</script>
